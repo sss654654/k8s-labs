@@ -1,0 +1,19 @@
+# fortune-lb.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: fortune-lb
+  # NLB 생성 시 annotation이 없다면 외부와 연결이 안된다!!!
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: external
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+spec:
+  selector:
+    app: fortune
+  ports:
+    - port: 80
+      targetPort: 80
+  type: LoadBalancer
+  # externalIPs: # local 쿠버네티스 노드의 IP를 작성하면 LB 생성 가능
+  # - 192.168.0.2

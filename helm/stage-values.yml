@@ -1,0 +1,5 @@
+environment: development
+replicas: 4
+container:
+  name: nginx-good-job
+# 이걸 알려면 nginxstd/values.yaml을 봐야 함

@@ -1,0 +1,12 @@
+# pvc.yml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+   name: mongodb-pvc2
+spec:
+  storageClassName: fast # fast(sc)를 참조해라
+  resources:
+    requests:
+      storage: 2Gi
+  accessModes:
+    - ReadWriteOnce

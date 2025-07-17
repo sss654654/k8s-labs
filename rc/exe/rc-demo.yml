@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: goapp-rc-demo
+spec:
+  replicas: 4
+  selector:
+    app: goapp
+  template:
+    metadata:
+      name: goapp-pod-demo
+      labels:
+        tier: forntend
+        app: goapp
+        env: prod
+        priority:  high
+    spec:
+      containers:
+      - name: goapp-container
+        image: Nginx:1.14.2
+        ports:
+        - containerPort: 8080

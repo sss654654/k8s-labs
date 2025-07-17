@@ -1,0 +1,19 @@
+# kubetemp/lb.yml
+apiVersion: v1
+kind: Service
+metadata:
+    name: nodesjs-sfs-lb
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-type: external
+      service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+      service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+spec:
+    type: LoadBalancer
+    sessionAffinity: None # 이거 왜해?
+    # -> 한번에 계속 하나에 집중해서 분산시키지 말고 여러군데로 분산시켜라~
+
+    ports:
+    - port: 80
+      targetPort: 8080
+    selector:
+        app: nodejs-sfs

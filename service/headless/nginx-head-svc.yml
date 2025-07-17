@@ -1,0 +1,13 @@
+# headless-svc.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-head
+  labels:
+    app: nginx
+spec:
+  ports:
+  - port: 80
+    name: web
+  selector:
+    app: nginx

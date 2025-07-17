@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    test: liveness
+  name: readiness-demo-pod
+spec:
+  containers:
+  - name: readiness-demo
+    image: redis:7.2
+    ports:
+    - containerPort: 6379
+    readinessProbe:
+      tcpSocket:
+        port: 6379
+      initialDelaySeconds: 5
+      periodSeconds: 10

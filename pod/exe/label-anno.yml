@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: goapp-pod
+  labels:
+    env: appache
+    tier: frontend
+spec:
+  containers:
+  - image: bitnami/apache
+    name: goapp-container
+    ports:
+    - containerPort: 8080
+      protocol: TCP
